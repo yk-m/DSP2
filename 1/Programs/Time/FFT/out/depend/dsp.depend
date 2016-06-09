@@ -1,0 +1,2 @@
+dsp.o: src/dsp.c include/dsp.h include/array.h include/iof.h \
+ include/error.h

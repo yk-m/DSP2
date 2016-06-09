@@ -1,0 +1,4 @@
+main.o: src/main.c include/iof.h include/error.h include/dct.h \
+ include/array.h include/iof.h include/matrix.h include/image.h \
+ include/bmp.h include/binary.h include/image.h include/compress.h \
+ include/bmp.h include/dct.h

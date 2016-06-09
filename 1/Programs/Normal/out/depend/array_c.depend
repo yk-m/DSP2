@@ -1,0 +1,2 @@
+array_c.o: src/array_c.c include/array_c.h include/iof.h include/error.h \
+ include/complex.h include/array.h

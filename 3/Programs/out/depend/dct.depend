@@ -1,0 +1,2 @@
+dct.o: src/dct.c include/dct.h include/array.h include/iof.h \
+ include/error.h include/matrix.h

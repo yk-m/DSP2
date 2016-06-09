@@ -1,0 +1,1 @@
+array.o: src/array.c include/array.h include/iof.h include/error.h

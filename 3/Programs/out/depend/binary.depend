@@ -1,0 +1,1 @@
+binary.o: src/binary.c include/binary.h include/error.h

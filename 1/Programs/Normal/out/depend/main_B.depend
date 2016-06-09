@@ -1,0 +1,3 @@
+main_B.o: src/main_B.c include/array.h include/iof.h include/error.h \
+ include/array_c.h include/complex.h include/array.h \
+ include/correlation.h include/array_c.h include/fft.h

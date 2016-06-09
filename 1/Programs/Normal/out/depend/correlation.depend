@@ -1,0 +1,3 @@
+correlation.o: src/correlation.c include/correlation.h include/error.h \
+ include/array.h include/iof.h include/array_c.h include/complex.h \
+ include/fft.h

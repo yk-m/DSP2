@@ -1,0 +1,1 @@
+image.o: src/image.c include/image.h include/error.h include/iof.h

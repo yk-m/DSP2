@@ -1,0 +1,1 @@
+counter.o: src/counter.c include/counter.h
