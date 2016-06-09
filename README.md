@@ -1,1 +1,1 @@
-# DSP2
+# Digital Signal Processing II
