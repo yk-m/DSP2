@@ -1,6 +1,7 @@
 #ifndef IOF_H
 #define IOF_H
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "error.h"
 

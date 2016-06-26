@@ -1,3 +1,5 @@
+#include "error.h"
+
 void FileOpenError( const char* file_name ) {
 	printf("Could not Open \"%s\"\n", file_name );
 	exit(-1);

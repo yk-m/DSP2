@@ -2,6 +2,7 @@
 #define ERROR_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void FileOpenError( const char* file_name );
 void FileReadError( const char* value );

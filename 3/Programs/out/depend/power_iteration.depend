@@ -1,0 +1,2 @@
+power_iteration.o: src/power_iteration.c include/power_iteration.h \
+ include/matrix.h include/iof.h include/error.h include/eigen.h

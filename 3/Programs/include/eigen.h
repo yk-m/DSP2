@@ -17,4 +17,13 @@ typedef struct {
 	int length;
 } Array_Eigen;
 
+
+Eigen* newEigen();
+void freeEigen( Eigen* e );
+void printEigen( Eigen* e );
+
+Array_Eigen* newArray_Eigen( int length );
+void freeArray_Eigen( Array_Eigen* e );
+void printArray_Eigen( Array_Eigen* e );
+
 #endif

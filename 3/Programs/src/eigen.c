@@ -1,21 +1,26 @@
 #include "eigen.h"
 
-Eigen* newEigen( int row, bool init ) {
+Eigen* newEigen() {
 	Eigen *e;
 
 	if( ( e = (Eigen*)malloc( sizeof( Eigen ) ) ) == NULL )
 		AllocationError();
 
-	if ( !init )
-		return e;
-
-	e->vector = newMatrix( row, 0 );
-	e->vector->a[0][0] = 1;
-	for ( int i = 1; i < e->vector->row; ++i ) {
-		e->vector->a[i][0] = 0;
-	}
-
 	return e;
+}
+
+void freeEigen( Eigen* e ) {
+	freeMatrix( e->vector );
+	free( e );
+}
+
+void printEigen( Eigen* e ) {
+	printf( "Eigen value: %.4f\n", e->value );
+	printf( "Eigen vector:\n" );
+	for ( int i = 0; i < e->vector->row; i++ ) {
+		printf("    | %7.4f |\n", e->vector->a[i][0] );
+	}
+	printf("\n");
 }
 
 Array_Eigen* newArray_Eigen( int length ) {
@@ -33,6 +38,15 @@ Array_Eigen* newArray_Eigen( int length ) {
 }
 
 void freeArray_Eigen( Array_Eigen* e ) {
+	for ( int i = 0; i < e->length; i++ ) {
+		freeEigen( e->a[i] );
+	}
 	free( e->a );
 	free( e );
+}
+
+void printArray_Eigen( Array_Eigen* e ) {
+	for ( int i = 0; i < e->length; i++ ) {
+		printEigen( e->a[i] );
+	}
 }

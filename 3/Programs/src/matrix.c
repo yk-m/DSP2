@@ -20,6 +20,22 @@ Matrix* newMatrix( int row, int column ) {
 	return d;
 }
 
+Matrix* newIdentityMatrix( int row, int column ) {
+	Matrix *d = newMatrix( row, column );
+
+	for ( int r = 0; r < d->row; ++r ) {
+		for ( int c = 0; c < d->column; ++c ) {
+			if ( r == c ) {
+				d->a[r][c] = 1;
+				continue;
+			}
+			d->a[r][c] = 0;
+		}
+	}
+
+	return d;
+}
+
 void freeMatrix( Matrix* d ) {
 	for ( int i = 0; i < d->row; ++i ) {
 		free( d->a[i] );
@@ -124,12 +140,29 @@ void printMatrixToFile( Matrix* a, const char file_name[] ) {
 	fclose( fp );
 }
 
+Matrix *subtract( Matrix *a, Matrix *b ) {
+	Matrix *diff;
+
+	if ( a->row != b->row || a->column != b->column ) {
+		InvalidMatrixFormatError();
+	}
+
+	diff = newMatrix( a->row, a->column );
+
+	for ( int row = 0; row < a->row; row++ ) {
+		for ( int col = 0; col < b->column; col++ ) {
+			diff->a[ row ][ col ] = a->a[ row ][ col ] - b->a[ row ][ col ];
+		}
+	}
+
+	return diff;
+}
+
 Matrix *multiply( Matrix *a, Matrix *b ) {
 	Matrix *product;
 
 	if ( a->column != b->row ) {
 		InvalidMatrixFormatError();
-		exit( -1 );
 	}
 
 	product = newMatrix( a->row, b->column );
@@ -146,6 +179,28 @@ Matrix *multiply( Matrix *a, Matrix *b ) {
 	return product;
 }
 
+Matrix *multiplyByScalar( Matrix *a, double b )  {
+	 Matrix *product = newMatrix( a->row, a->column );
+	for ( int row = 0; row < a->row; row++ ) {
+		for ( int column = 0; column < a->column; ++column ) {
+			product->a[row][column] = a->a[row][column] * b;
+		}
+	}
+
+	return product;
+}
+
+Matrix *divideByScalar( Matrix *a, double b ) {
+	 Matrix *quotient = newMatrix( a->row, a->column );
+	for ( int row = 0; row < a->row; row++ ) {
+		for ( int column = 0; column < a->column; ++column ) {
+			quotient->a[row][column] = a->a[row][column] / b;
+		}
+	}
+
+	return quotient;
+}
+
 Matrix *transpose( Matrix* m ) {
 	Matrix *transposed = newMatrix( m->column, m->row );
 
@@ -156,6 +211,23 @@ Matrix *transpose( Matrix* m ) {
 	}
 
 	return transposed;
+}
+
+double dotProduct( Matrix* a, Matrix* b ) {
+	double product = 0;
+
+	if ( a->column != 1 || b->column != 1 || a->row != b->row ) {
+		InvalidMatrixFormatError();
+	}
+
+	for ( int row = 0; row < a->row; ++row ) {
+		product += a->a[row][0] * b->a[row][0];
+	}
+	return product;
+}
+
+double calcNorm( Matrix* a ) {
+	return sqrt( dotProduct( a, a ) );
 }
 
 

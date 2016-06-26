@@ -1,4 +1,3 @@
-main.o: src/main.c include/iof.h include/error.h include/dct.h \
- include/array.h include/iof.h include/matrix.h include/image.h \
- include/bmp.h include/binary.h include/image.h include/compress.h \
- include/bmp.h include/dct.h
+main.o: src/main.c include/matrix.h include/iof.h include/error.h \
+ include/eigen.h include/matrix.h include/jacobi.h include/eigen.h \
+ include/jacobi.h include/power_iteration.h

@@ -1,7 +1,11 @@
 PROGRAM_NAME := dsp2-3
 
-INPUT_DIR := ./files/input/
-OUTPUT_DIR := ./files/output/
+INPUT_DIR := ./files/input
+OUTPUT_DIR := ./files/output
+
+INPUT_FILE1 := $(INPUT_DIR)/1-4-1.txt
+INPUT_FILE2 := $(INPUT_DIR)/1-4-2.txt
+INPUT_FILE := $(INPUT_DIR)/input.txt
 
 # compiler
 CXX := gcc
@@ -53,7 +57,15 @@ endif
 
 .PHONY : run
 run:
-	@./$(PROGRAM_NAME)
+	@./$(PROGRAM_NAME) $(INPUT_FILE)
+
+.PHONY : run141
+run141:
+	@./$(PROGRAM_NAME) $(INPUT_FILE1)
+
+.PHONY : run142
+run142:
+	@./$(PROGRAM_NAME) $(INPUT_FILE2)
 
 .PHONY : info
 info:
