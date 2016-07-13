@@ -9,7 +9,7 @@ Array_Eigen* powerIteration( Matrix* a, double gap ) {
 	eigens->a[0] = computePower( a, initial_vector, gap );
 	for ( int i = 1; i < eigens->length; i++ ) {
 		tmp = a;
-		a = copmuteNextMatrix( a, eigens->a[i-1] );
+		a = computeNextMatrix( a, eigens->a[i-1] );
 		eigens->a[i] = computePower( a, initial_vector, gap );
 
 		if ( i != 1 )
@@ -22,7 +22,7 @@ Array_Eigen* powerIteration( Matrix* a, double gap ) {
 	return eigens;
 }
 
-Matrix* copmuteNextMatrix( Matrix* prev, Eigen* e_prev ) {
+Matrix* computeNextMatrix( Matrix* prev, Eigen* e_prev ) {
 	Matrix *product, *scalar_product, *transposed, *next;
 
 	transposed = transpose( e_prev->vector );

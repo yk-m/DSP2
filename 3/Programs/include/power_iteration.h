@@ -9,7 +9,7 @@
 #include "eigen.h"
 
 Array_Eigen* powerIteration( Matrix* a, double gap );
-Matrix* copmuteNextMatrix( Matrix* prev, Eigen* e_prev );
+Matrix* computeNextMatrix( Matrix* prev, Eigen* e_prev );
 Eigen* computePower( Matrix* a, Matrix* prev, double gap );
 
 #endif

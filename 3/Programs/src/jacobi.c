@@ -1,7 +1,7 @@
 #include "jacobi.h"
 
 Array_Eigen* jacobi( Matrix *m, double gap ) {
-	Matrix *eigen_values = m
+	Matrix *eigen_values = cloneMatrix(m)
 	     , *eigen_vectors = newIdentityMatrix( m->row, m->row )
 	;
 	Coordinate position;
@@ -28,7 +28,7 @@ Array_Eigen* jacobi( Matrix *m, double gap ) {
 
 		previous = position.value;
 
-		angle = calcAngle( m, position );
+		angle = calcAngle( eigen_values, position );
 		rotate( eigen_values,  position, angle );
 		append( eigen_vectors, position, angle );
 		repair( eigen_values );
@@ -36,6 +36,9 @@ Array_Eigen* jacobi( Matrix *m, double gap ) {
 
 	result = splitToEigen( eigen_values, eigen_vectors );
 	sort( result );
+
+	freeMatrix(eigen_vectors);
+	freeMatrix(eigen_values);
 	return result;
 }
 
@@ -66,19 +69,6 @@ void sort( Array_Eigen* eigens ) {
 		}
 	}
 }
-
-// void sort( Matrix *m ) {
-// 	double *tmp;
-// 	for ( int i = 0; i < m->row; i++ ) {
-// 		for ( int j = m->row - 1; j > i; j-- ) {
-// 			if ( m->a[j][0] <= m->a[j-1][0] )
-// 				continue;
-// 			tmp = m->a[j];
-// 			m->a[j] = m->a[j-1];
-// 			m->a[j-1] = tmp;
-// 		}
-// 	}
-// }
 
 void rotate( Matrix *m, Coordinate position, Trigonometry angle ) {
 	double tmp_i, tmp_j

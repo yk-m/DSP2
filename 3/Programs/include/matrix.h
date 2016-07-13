@@ -10,6 +10,8 @@
 #include "iof.h"
 #include "error.h"
 
+#define LINE_MAX 5000
+
 typedef struct {
 	double **a;
 	int row;
@@ -19,6 +21,7 @@ typedef struct {
 Matrix* newMatrix( int row, int column );
 Matrix* newIdentityMatrix( int row, int column );
 void freeMatrix( Matrix* d );
+Matrix *cloneMatrix( Matrix* m );
 
 Matrix *loadFileAsMatrix( const char file[], bool ask_filename );
 void determineDimensionOfMatrix( const char file_name[], int* row, int* column );

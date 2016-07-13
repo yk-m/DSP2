@@ -7,6 +7,8 @@ INPUT_FILE1 := $(INPUT_DIR)/1-4-1.txt
 INPUT_FILE2 := $(INPUT_DIR)/1-4-2.txt
 INPUT_FILE := $(INPUT_DIR)/input.txt
 
+SIGMA := $(INPUT_DIR)/sigma/sigma31.txt
+
 # compiler
 CXX := gcc
 CXXFLAGS := -Wextra -std=c99 -g -O0
@@ -66,6 +68,10 @@ run141:
 .PHONY : run142
 run142:
 	@./$(PROGRAM_NAME) $(INPUT_FILE2)
+
+.PHONY : sigma
+sigma:
+	@./$(PROGRAM_NAME) $(SIGMA)
 
 .PHONY : info
 info:

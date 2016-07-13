@@ -49,7 +49,7 @@ Matrix *loadFileAsMatrix( const char file[], bool ask_filename ) {
 	Matrix *m;
 
 	char file_name[FN]
-	   , line[FN]
+	   , line[LINE_MAX]
 	   , *ends
 	;
 	int row, column;
@@ -79,8 +79,20 @@ Matrix *loadFileAsMatrix( const char file[], bool ask_filename ) {
 	return m;
 }
 
+Matrix *cloneMatrix( Matrix* m ) {
+	Matrix* clone = newMatrix( m->row, m->column );
+
+	for ( int r = 0; r < clone->row; ++r ) {
+		for ( int c = 0; c < clone->column; ++c ) {
+			clone->a[r][c] = m->a[r][c];
+		}
+	}
+
+	return clone;
+}
+
 void determineDimensionOfMatrix( const char file_name[], int* row, int* column ) {
-	char line[FN];
+	char line[LINE_MAX];
 	FILE *fp = openFile( file_name, "r" );
 
 	if ( fgets( line, sizeof( line ) , fp ) == NULL )
