@@ -1,0 +1,2 @@
+fft.o: src/fft.c include/fft.h include/error.h include/complex.h \
+ include/array.h include/iof.h include/array_c.h include/calculation.h

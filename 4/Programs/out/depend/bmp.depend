@@ -1,0 +1,2 @@
+bmp.o: src/bmp.c include/bmp.h include/error.h include/iof.h \
+ include/binary.h include/image.h

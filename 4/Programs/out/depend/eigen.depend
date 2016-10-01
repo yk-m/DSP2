@@ -1,0 +1,2 @@
+eigen.o: src/eigen.c include/eigen.h include/error.h include/matrix.h \
+ include/iof.h

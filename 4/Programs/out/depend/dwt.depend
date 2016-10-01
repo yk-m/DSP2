@@ -1,0 +1,2 @@
+dwt.o: src/dwt.c include/dwt.h include/array.h include/iof.h \
+ include/error.h include/calculation.h

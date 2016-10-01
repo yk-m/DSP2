@@ -1,0 +1,5 @@
+main.o: src/main.c include/array.h include/iof.h include/error.h \
+ include/dft.h include/complex.h include/array.h include/array_c.h \
+ include/fft.h include/calculation.h include/dwt.h \
+ include/noise_removal.h include/dft.h include/dwt.h include/wave.h \
+ include/calculation.h

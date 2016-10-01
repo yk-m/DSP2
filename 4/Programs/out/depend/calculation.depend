@@ -1,0 +1,1 @@
+calculation.o: src/calculation.c include/calculation.h

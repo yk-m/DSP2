@@ -1,0 +1,2 @@
+window.o: src/window.c include/window.h include/array.h include/iof.h \
+ include/error.h

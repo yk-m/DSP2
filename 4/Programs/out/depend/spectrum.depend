@@ -1,0 +1,2 @@
+spectrum.o: src/spectrum.c include/spectrum.h include/array.h \
+ include/iof.h include/error.h include/array_c.h include/complex.h

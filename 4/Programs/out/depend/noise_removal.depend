@@ -1,0 +1,3 @@
+noise_removal.o: src/noise_removal.c include/noise_removal.h \
+ include/array.h include/iof.h include/error.h include/array_c.h \
+ include/complex.h include/dft.h include/dwt.h include/calculation.h
